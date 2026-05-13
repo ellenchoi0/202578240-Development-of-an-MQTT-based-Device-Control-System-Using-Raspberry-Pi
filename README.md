@@ -22,22 +22,24 @@
 
 ## 회로 구성 및 통신 이론
 
-- **MQTT Broker (Mosquitto)**: 메시지 발행 및 구독을 중계하는 서버 소프트웨어로, 외부 접속 허용을 위한 보안 설정 수정이 필수적임
-- **GPIOZERO 의존성**: 하드웨어 제어를 위해 liblgpio, lgpio, swig와 같은 C 언어 기반 핵심 라이브러리 선행 설치 필요
-- **Thread(스레드)**: 프로세스 내에서 실행되는 작업의 최소 단위로, 메인 루프 외에 별도의 스레드를 생성하여 수신 대기 중에도 주기적인 데이터 송신 가능
+- **MQTT 브로커(Mosquitto)**: 메시지 중계 역할을 수행하며, 외부 접속 허용을 위한 listener 설정 적용
+- **하위 라이브러리 의존성**: gpiozero 구동을 위해 swig(빌드 도구) 및 liblgpio(C 라이브러리) 선행 설치 필요
+- **스레딩(Threading)**: 파이썬의 순차적 실행 구조를 분리하여 수신(Subscribe)과 송신(Publish)을 독립된 작업 단위로 처리
   
 ## 동작 영상(YouTube)
 
-실제 MQTT 통신을 통한 LED 제어 및 스레딩 동작 과정은 아래 영상에서 확인하실 수 있습니다.
-- [라즈베리파이 MQTT 양방향 제어 실습(202578240 최서의)](https://youtu.be/z8fFxXIhTis)
+실제 회로 구성 후 MQTT 통신을 통해 양방향 제어가 어떻게 이루어지는지 아래 영상에서 확인하실 수 있습니다.
+- [MQTT 통신으로 제어하는 장치 만들기(202578240 최서의)](https://youtu.be/z8fFxXIhTis)
 
 ## 실행 및 설치
 
-### 1. 환경 구축 및 의존성 설치
+### 1. 의존성 설치
 
-라즈베리파이 가상환경 내에서 다음 라이브러리를 순차적으로 설치합니다.
-> sudo apt-get install mosquitto mosquitto-clients swig liblgpio-dev
-> pip install lgpio gpiozero paho-mqtt
+가상환경 활성화 후 아래 순서대로 필수 패키지를 설치합니다.
+> sudo apt install swig               # 빌드 도구 설치
+> sudo apt install liblgpio-dev       # C 핵심 라이브러리 설치
+> pip install lgpio                   # Python 바인딩 설치
+> pip install gpiozero                # 제어 및 통신 라이브러리 설치
 
 ### 2. 브로커 설정
 
