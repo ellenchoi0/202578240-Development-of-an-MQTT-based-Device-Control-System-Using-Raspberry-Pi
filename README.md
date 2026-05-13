@@ -44,8 +44,7 @@
 ### 2. MQTT 브로커 설정
 
 Mosquitto 설치 후 외부 기기 접속을 위해 /etc/mosquitto/mosquitto.conf 수정이 필요합니다.
-> listener 1883 0.0.0.0
-> allow_anonymous true 설정 추
+> listener 1883 0.0.0.0 및 allow_anonymous true 설정 추가
 
 ### 3. 서버 실행
 
