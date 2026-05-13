@@ -37,7 +37,7 @@
 
 가상환경 활성화 후 아래 순서대로 필수 패키지를 설치합니다.
 > sudo apt install swig               # 빌드 도구 설치
-> sudo apt install liblgpio-dev       # C 핵심 라이브러리 설치
+>> sudo apt install liblgpio-dev       # C 핵심 라이브러리 설치
 > pip install lgpio                   # Python 바인딩 설치
 > pip install gpiozero                # 제어 및 통신 라이브러리 설치
 
